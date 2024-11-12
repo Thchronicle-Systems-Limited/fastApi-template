@@ -1,0 +1,14 @@
+fastapi[all]
+uvicorn
+uuid
+slugify
+passlib[bcrypt]
+python-jose[cryptography]
+python-jose
+jwt
+python-dotenv
+pyjwt
+pillow 
+python-multipart
+sqlmodel
+psycopg2-binary
