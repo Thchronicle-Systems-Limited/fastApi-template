@@ -1,12 +1,12 @@
 
 from fastapi import APIRouter, UploadFile, File
-from .. import schemas, database, models, oauth2
+import schemas, database, models, oauth2
 from typing import List, Optional
 from fastapi import Depends, status, Response, HTTPException
 from sqlalchemy.orm import Session   
 from uuid import UUID
-from ..oauth2 import get_current_user
-from .. import oauth2
+from  oauth2 import get_current_user
+import oauth2
 import uuid
 from io import BytesIO
 from PIL import Image  # To handle image processing

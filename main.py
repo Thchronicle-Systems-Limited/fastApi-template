@@ -4,15 +4,15 @@ from pydantic import BaseModel
 from uuid import UUID
 
 
-from . import schemas, models
-from .database import engine, get_db
+import schemas, models
+from database import engine, get_db
 from sqlalchemy.orm import Session   
 from fastapi import Depends, status, Response, HTTPException
 from slugify import slugify
 import uuid
-from .routers import authentication, blog, user, pitch, brand, message, myprofile
+from routers import authentication, blog, user, pitch, brand, message, myprofile
 app = FastAPI()
-from .models import Blog, SQLModel
+from models import Blog, SQLModel
 UPLOAD_DIR = "images"
 
 # Create database tables 

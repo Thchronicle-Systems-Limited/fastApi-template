@@ -1,12 +1,13 @@
 from fastapi import APIRouter
-from .. import schemas, database, models, token
+import schemas, database, models, auth_token
 from typing import List
 from fastapi import Depends, status, Response, HTTPException
 from sqlalchemy.orm import Session   
 from uuid import UUID
-from .. hashing import Hash
-from ..schemas import Token, TokenData
+from hashing import Hash
+from schemas import Token, TokenData
 from fastapi.security import OAuth2PasswordRequestForm
+import token
 
 get_db = database.get_db
 router = APIRouter()
@@ -20,6 +21,6 @@ def login(request: OAuth2PasswordRequestForm = Depends(), db:Session =Depends(ge
     if not Hash.verify(user.password, request.password):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Invalid credentials')
         
-    access_token = token.create_access_token(
+    access_token = auth_token.create_access_token(
         data={"sub": user.username})
     return Token(access_token=access_token, token_type="bearer")

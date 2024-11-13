@@ -1,13 +1,13 @@
 
 from fastapi import APIRouter
-from .. import schemas, database, models
+import schemas, database, models
 from typing import List
 from fastapi import Depends, status, Response, HTTPException
 from sqlalchemy.orm import Session   
 from uuid import UUID
-from .. hashing import Hash
-from ..oauth2 import get_current_user
-from .. import oauth2
+from  hashing import Hash
+from oauth2 import get_current_user
+import oauth2
 from fastapi import  File, UploadFile, Response, status
 import shutil
 import os
